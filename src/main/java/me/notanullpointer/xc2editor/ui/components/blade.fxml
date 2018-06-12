@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<fx:root type="javafx.scene.layout.AnchorPane" prefHeight="192.0" prefWidth="128.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="bladeThumb" fitHeight="128.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../homuri.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bladeDriver" fitHeight="48.0" fitWidth="48.0" layoutX="16.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../homuri.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bladeWeapon" fitHeight="48.0" fitWidth="48.0" layoutX="64.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../aegis_sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bladeElement" fitHeight="32.0" fitWidth="32.0" layoutX="78.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../light.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bladeRole" fitHeight="34.0" fitWidth="34.0" layoutX="93.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../atk.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="bladeLabel" layoutX="6.0" layoutY="128.0" text="BladeName">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</fx:root>

@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="JavaFXApp">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaFXApp</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="me.notanullpointer.xc2editor.XC2Editor" />
+        <option name="description" value="" />
+        <option name="height" value="300" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="XC2Editor" />
+        <option name="vendor" value="" />
+        <option name="version" value="0.1" />
+        <option name="width" value="950" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="JavaFXApp.jar">
+        <element id="module-output" name="XC2Editor" />
+        <element id="extracted-dir" path="$USER_HOME$/Downloads/jfoenix-8.0.4.jar" path-in-jar="/" />
+      </element>
+    </root>
+  </artifact>
+</component>
