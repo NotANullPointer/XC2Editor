@@ -1,14 +1,11 @@
 package me.notanullpointer.xc2editor.ui;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 
 import me.notanullpointer.xc2editor.save.Blade;
 import me.notanullpointer.xc2editor.ui.components.BladeView;
-
-import java.awt.image.BufferedImage;
 
 public class BladeSelection {
 

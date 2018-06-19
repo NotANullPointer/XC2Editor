@@ -2,13 +2,14 @@ package me.notanullpointer.xc2editor.save.parser;
 
 import static me.notanullpointer.xc2editor.save.parser.Utils.arrayRange;
 
-public class String16 implements SaveComponent {
+public class String32 implements SaveComponent {
 
-    Int8 string[] = new Int8[16];
+    Int8 string[] = new Int8[32];
     Int32 length;
 
     @Override
     public byte[] toByteArray() {
+        //TODO: STUB
         return new byte[0];
     }
 
@@ -21,13 +22,13 @@ public class String16 implements SaveComponent {
     }
 
     @Override
-    public String16 fromByteArray(byte[] bytes) {
-        for(int i = 0x0; i<0x10; i++) {
+    public String32 fromByteArray(byte[] bytes) {
+        for(int i = 0x0; i<0x20; i++) {
             Int8 val = new Int8();
             val.setValue((char)bytes[i]);
             this.string[i] = val;
         }
-        this.length = new Int32().fromByteArray(arrayRange(bytes, 0x10, 0x14));
+        this.length = new Int32().fromByteArray(arrayRange(bytes, 0x20, 0x24));
         return this;
     }
 }

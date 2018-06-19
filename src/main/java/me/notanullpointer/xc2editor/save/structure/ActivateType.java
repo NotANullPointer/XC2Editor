@@ -14,4 +14,13 @@ public enum ActivateType {
         this.id = id;
     }
 
+    public static ActivateType fromId(Int16 id) {
+        for (ActivateType at: values()) {
+            if(at.id.getValue() == id.getValue()) {
+                return at;
+            }
+        }
+        return null;
+    }
+
 }

@@ -6,32 +6,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<fx:root type="javafx.scene.layout.AnchorPane" prefHeight="192.0" prefWidth="128.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="192.0" prefWidth="128.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="bladeThumb" fitHeight="128.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../homuri.png" />
+            <Image url="@../../../../../homuri.png" />
          </image>
       </ImageView>
       <ImageView fx:id="bladeDriver" fitHeight="48.0" fitWidth="48.0" layoutX="16.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../homuri.png" />
+            <Image url="@../../../../../homuri.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bladeWeapon" fitHeight="48.0" fitWidth="48.0" layoutX="64.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bladeWeapon" fitHeight="32.0" fitWidth="32.0" layoutX="2.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../aegis_sword.png" />
+            <Image url="@../../../../../aegis_sword.png" />
          </image>
       </ImageView>
       <ImageView fx:id="bladeElement" fitHeight="32.0" fitWidth="32.0" layoutX="78.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../light.png" />
+            <Image url="@../../../../../light.png" />
          </image>
       </ImageView>
       <ImageView fx:id="bladeRole" fitHeight="34.0" fitWidth="34.0" layoutX="93.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../atk.png" />
+            <Image url="@../../../../../atk.png" />
          </image>
       </ImageView>
       <Label fx:id="bladeLabel" layoutX="6.0" layoutY="128.0" text="BladeName">

@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="XC2Editor" target="1.5" />
+      <module name="XC2Editor" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

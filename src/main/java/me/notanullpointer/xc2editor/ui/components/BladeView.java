@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import me.notanullpointer.xc2editor.save.Blade;
+import me.notanullpointer.xc2editor.save.Driver;
 import me.notanullpointer.xc2editor.ui.BladeSelection;
 
 import java.awt.image.BufferedImage;
@@ -25,8 +26,7 @@ public class BladeView extends AnchorPane {
     private @FXML Label bladeLabel;
 
     public BladeView(Blade blade) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "blade.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getClassLoader().getResource("fxml/blade.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
@@ -43,11 +43,16 @@ public class BladeView extends AnchorPane {
     }
 
     private void init() {
+        if(blade.getData().getCreator().getValue() != 0)
+            this.bladeDriver.setImage(toFXImage(Driver.fromId(blade.getData().getCreator().getValue()).getDriverThumb().getImage()));
         if(blade.getThumbnail() != null)
             this.bladeThumb.setImage(toFXImage(blade.getThumbnail().getImage()));
-        this.bladeWeapon.setImage(toFXImage(blade.getWeapon().getThumbnail().getImage()));
-        this.bladeElement.setImage(toFXImage(blade.getElement().getThumbnail().getImage()));
-        this.bladeRole.setImage(toFXImage(blade.getRole().getThumbnail().getImage()));
+        if(blade.getWeapon() != null)
+            this.bladeWeapon.setImage(toFXImage(blade.getWeapon().getThumbnail().getImage()));
+        if(blade.getElement() != null)
+            this.bladeElement.setImage(toFXImage(blade.getElement().getThumbnail().getImage()));
+        if(blade.getRole() != null)
+            this.bladeRole.setImage(toFXImage(blade.getRole().getThumbnail().getImage()));
         this.bladeLabel.setText(blade.getName());
         FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
         this.bladeLabel.setLayoutX((128-fontLoader.computeStringWidth(blade.getName(), bladeLabel.getFont()))/2);

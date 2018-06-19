@@ -142,6 +142,10 @@ public enum Image {
     AGATE_T,
     VALE_T,
     DAHLIA_T,
+    T_ELOS_T,
+    POPPIBUSTER_T,
+    SHULK_T,
+    FIORA_T,
     MD_REX_T,
     CMALE_1,
     CMALE_2,
@@ -194,10 +198,12 @@ public enum Image {
     WPN_CALAMITY_SCYTHE,
     WPN_COBRA_BARDICHE,
     WPN_INFINITY_FANS,
-    WPN_BRILLANT_TWINBLADES,
+    WPN_BRILLIANT_TWINBLADES,
     WPN_DECIMATION_CANNON,
     WPN_ROCKRENDING_GAUNTLETS,
-    WPN_SWORD_TONFA;
+    WPN_SWORD_TONFA,
+    WPN_MONADO,
+    WPN_KNIVES;
 
 
     BufferedImage img;
@@ -339,7 +345,7 @@ public enum Image {
                 {GODFREY_T, AKHOS_T, PERCEVAL_T, PATROKA_T, FLOREN_T, GORG_T, BOREAS_T, KASANDRA_T},
                 {PRAXIS_T, THEORY_T, PERUN_T, KORA_T, AZAMI_T, URSULA_T, NEWT_T, NIM_T},
                 {SHEBA_T, VESS_T, ADENINE_T, ELECTRA_T, ZENOBIA_T, FINCH_T, MIKHAIL_T, DAGAS_T},
-                {KOSMOS_T, null, null, null, null, null, null, null},
+                {KOSMOS_T, POPPIBUSTER_T, T_ELOS_T, SHULK_T, FIORA_T, null, null, null},
                 {CMALE_1, CMALE_2, CMALE_3, CMALE_4, null, null, null, null},
                 {CFEMALE_1, CFEMALE_2, CFEMALE_3, CFEMALE_4, null, null, null, null},
                 {CBRUTE_1, CBRUTE_2, CBRUTE_3, CBRUTE_4, null, null, null, null},
@@ -379,8 +385,8 @@ public enum Image {
                 {WPN_VARIABLE_SABER, WPN_WHIPSWORDS, WPN_BIG_BANG_EDGE, WPN_DUAL_SCYTHES, WPN_GREATAXE},
                 {WPN_MEGALANCE, WPN_ETHER_CANNON, WPN_SHIELD_HAMMER, WPN_CHROMA_KATANA, WPN_BITBALL},
                 {WPN_KNUCKLE_CLAWS, WPN_BROADSWORD, null, null, WPN_CALAMITY_SCYTHE},
-                {WPN_COBRA_BARDICHE, WPN_INFINITY_FANS, WPN_BRILLANT_TWINBLADES, WPN_DECIMATION_CANNON, WPN_ROCKRENDING_GAUNTLETS},
-                {WPN_SWORD_TONFA, null, null, null, null}
+                {WPN_COBRA_BARDICHE, WPN_INFINITY_FANS, WPN_BRILLIANT_TWINBLADES, WPN_DECIMATION_CANNON, WPN_ROCKRENDING_GAUNTLETS},
+                {WPN_SWORD_TONFA, WPN_MONADO, WPN_KNIVES, null, null}
         };
         for(int row = 0; row < 6; row++) {
             for(int column = 0; column < 5; column++) {

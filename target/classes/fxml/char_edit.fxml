@@ -27,7 +27,7 @@
                </image></ImageView>
          </center>
       </BorderPane>
-      <JFXSlider blockIncrement="1.0" layoutX="9.0" layoutY="217.0" majorTickUnit="98.0" max="99.0" min="1.0" minorTickCount="5" prefHeight="53.0" prefWidth="135.0" showTickLabels="true" showTickMarks="true" value="-1.0" />
+      <JFXSlider fx:id="levelSlider" blockIncrement="1.0" layoutX="9.0" layoutY="217.0" majorTickUnit="98.0" max="99.0" min="1.0" minorTickCount="5" prefHeight="53.0" prefWidth="135.0" showTickLabels="true" showTickMarks="true" value="-1.0" />
       <Label layoutX="60.0" layoutY="249.0" text="Level" textFill="BLUE">
          <font>
             <Font size="12.0" />
@@ -37,45 +37,45 @@
          <font>
             <Font size="14.0" />
          </font></JFXButton>
-      <JFXTextField labelFloat="true" layoutX="149.0" layoutY="77.0" prefHeight="25.0" prefWidth="120.0" promptText="Skill Points" text="X" />
-      <JFXTextField labelFloat="true" layoutX="149.0" layoutY="133.0" prefHeight="25.0" prefWidth="120.0" promptText="Weapon Points" text="X" />
+      <JFXTextField fx:id="skillPointsTextBox" labelFloat="true" layoutX="149.0" layoutY="77.0" prefHeight="25.0" prefWidth="120.0" promptText="Skill Points" text="X" />
+      <JFXTextField fx:id="weaponPointsTextBox" labelFloat="true" layoutX="149.0" layoutY="133.0" prefHeight="25.0" prefWidth="120.0" promptText="Weapon Points" text="X" />
       <JFXCheckBox disable="true" layoutX="286.0" layoutY="32.0" mnemonicParsing="false" selected="true" text=" " />
       <JFXCheckBox disable="true" layoutX="286.0" layoutY="94.0" mnemonicParsing="false" selected="true" text=" " />
       <JFXCheckBox fx:id="accessoryToggle2" layoutX="286.0" layoutY="156.0" mnemonicParsing="false" onAction="#toggleAccessory2" text=" " />
-      <JFXTextField labelFloat="true" layoutX="149.0" layoutY="28.0" prefHeight="25.0" prefWidth="120.0" promptText="Bonus Experience" text="X" />
-      <ImageView fx:id="accessory0" fitHeight="48.0" fitWidth="48.0" layoutX="315.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <JFXTextField fx:id="bonusExpTextBox" labelFloat="true" layoutX="149.0" layoutY="28.0" prefHeight="25.0" prefWidth="120.0" promptText="Bonus Experience" text="X" />
+      <ImageView fx:id="accessory0" fitHeight="48.0" fitWidth="48.0" layoutX="315.0" layoutY="11.0" onMouseClicked="#infoAccessory1" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-48.png" />
          </image></ImageView>
-      <ImageView fx:id="accessory1" fitHeight="48.0" fitWidth="48.0" layoutX="315.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="accessory1" fitHeight="48.0" fitWidth="48.0" layoutX="315.0" layoutY="73.0" onMouseClicked="#infoAccessory2" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-48.png" />
          </image></ImageView>
-      <ImageView fx:id="accessory2" disable="true" fitHeight="48.0" fitWidth="48.0" layoutX="315.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="accessory2" disable="true" fitHeight="48.0" fitWidth="48.0" layoutX="315.0" layoutY="135.0" onMouseClicked="#infoAccessory3" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-48.png" />
          </image></ImageView>
       <JFXCheckBox disable="true" layoutX="705.0" layoutY="32.0" mnemonicParsing="false" selected="true" text=" " />
-      <JFXCheckBox layoutX="705.0" layoutY="94.0" mnemonicParsing="false" text=" " />
-      <JFXCheckBox layoutX="705.0" layoutY="156.0" mnemonicParsing="false" text=" " />
-      <ImageView fx:id="pouch0" fitHeight="48.0" fitWidth="48.0" layoutX="649.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <JFXCheckBox fx:id="pouchToggle1" layoutX="705.0" layoutY="94.0" mnemonicParsing="false" onAction="#togglePouch1" text=" " />
+      <JFXCheckBox fx:id="pouchToggle2" layoutX="705.0" layoutY="156.0" mnemonicParsing="false" onAction="#togglePouch2" text=" " />
+      <ImageView fx:id="pouch0" fitHeight="48.0" fitWidth="48.0" layoutX="649.0" layoutY="11.0" onMouseClicked="#infoPouch1" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-48.png" />
          </image></ImageView>
-      <ImageView fx:id="pouch1" fitHeight="48.0" fitWidth="48.0" layoutX="649.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="pouch1" disable="true" fitHeight="48.0" fitWidth="48.0" layoutX="649.0" layoutY="73.0" onMouseClicked="#infoPouch2" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-48.png" />
          </image></ImageView>
-      <ImageView fx:id="pouch2" fitHeight="48.0" fitWidth="48.0" layoutX="649.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="pouch2" disable="true" fitHeight="48.0" fitWidth="48.0" layoutX="649.0" layoutY="135.0" onMouseClicked="#infoPouch3" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-48.png" />
          </image></ImageView>
-      <JFXComboBox labelFloat="true" layoutX="370.0" layoutY="30.0" prefHeight="25.0" prefWidth="118.0" />
-      <JFXComboBox labelFloat="true" layoutX="370.0" layoutY="91.0" prefHeight="25.0" prefWidth="118.0" />
-      <JFXComboBox fx:id="accessorySelection2" disable="true" labelFloat="true" layoutX="370.0" layoutY="153.0" prefHeight="25.0" prefWidth="118.0" />
-      <JFXComboBox labelFloat="true" layoutX="522.0" layoutY="30.0" prefHeight="25.0" prefWidth="118.0" />
-      <JFXComboBox labelFloat="true" layoutX="522.0" layoutY="91.0" prefHeight="25.0" prefWidth="118.0" />
-      <JFXComboBox labelFloat="true" layoutX="522.0" layoutY="153.0" prefHeight="25.0" prefWidth="118.0" />
+      <JFXComboBox fx:id="accessorySelection0" labelFloat="true" layoutX="370.0" layoutY="30.0" onAction="#updateImageAccessory1" prefHeight="25.0" prefWidth="118.0" />
+      <JFXComboBox fx:id="accessorySelection1" labelFloat="true" layoutX="370.0" layoutY="91.0" onAction="#updateImageAccessory2" prefHeight="25.0" prefWidth="118.0" />
+      <JFXComboBox fx:id="accessorySelection2" disable="true" labelFloat="true" layoutX="370.0" layoutY="153.0" onAction="#updateImageAccessory3" prefHeight="25.0" prefWidth="118.0" />
+      <JFXComboBox fx:id="pouchText0" labelFloat="true" layoutX="522.0" layoutY="30.0" onAction="#updateImagePouch1" prefHeight="25.0" prefWidth="118.0" />
+      <JFXComboBox fx:id="pouchText1" disable="true" labelFloat="true" layoutX="522.0" layoutY="91.0" onAction="#updateImagePouch2" prefHeight="25.0" prefWidth="118.0" />
+      <JFXComboBox fx:id="pouchText2" disable="true" labelFloat="true" layoutX="522.0" layoutY="153.0" onAction="#updateImagePouch3" prefHeight="25.0" prefWidth="118.0" />
       <ImageView fx:id="bravery" fitHeight="32.0" fitWidth="32.0" layoutX="224.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-48.png" />
@@ -96,10 +96,10 @@
             <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-32.png" />
          </image>
       </ImageView>
-      <JFXSlider blockIncrement="1.0" layoutX="176.0" layoutY="243.0" majorTickUnit="5.0" max="10.0" minorTickCount="5" prefHeight="53.0" prefWidth="120.0" showTickLabels="true" showTickMarks="true" value="-1.0" />
-      <JFXSlider blockIncrement="1.0" layoutX="330.0" layoutY="243.0" majorTickUnit="5.0" max="10.0" minorTickCount="5" prefHeight="53.0" prefWidth="120.0" showTickLabels="true" showTickMarks="true" value="-1.0" />
-      <JFXSlider blockIncrement="1.0" layoutX="488.0" layoutY="243.0" majorTickUnit="5.0" max="10.0" minorTickCount="5" prefHeight="53.0" prefWidth="120.0" showTickLabels="true" showTickMarks="true" value="-1.0" />
-      <JFXSlider blockIncrement="1.0" layoutX="645.0" layoutY="243.0" majorTickUnit="5.0" max="10.0" minorTickCount="5" prefHeight="53.0" prefWidth="120.0" showTickLabels="true" showTickMarks="true" value="-1.0" />
+      <JFXSlider fx:id="braverySlider" blockIncrement="1.0" layoutX="176.0" layoutY="243.0" majorTickUnit="5.0" max="10.0" minorTickCount="5" prefHeight="53.0" prefWidth="120.0" showTickLabels="true" showTickMarks="true" value="-1.0" />
+      <JFXSlider fx:id="truthSlider" blockIncrement="1.0" layoutX="330.0" layoutY="243.0" majorTickUnit="5.0" max="10.0" minorTickCount="5" prefHeight="53.0" prefWidth="120.0" showTickLabels="true" showTickMarks="true" value="-1.0" />
+      <JFXSlider fx:id="compassionSlider" blockIncrement="1.0" layoutX="488.0" layoutY="243.0" majorTickUnit="5.0" max="10.0" minorTickCount="5" prefHeight="53.0" prefWidth="120.0" showTickLabels="true" showTickMarks="true" value="-1.0" />
+      <JFXSlider fx:id="justiceSlider" blockIncrement="1.0" layoutX="645.0" layoutY="243.0" majorTickUnit="5.0" max="10.0" minorTickCount="5" prefHeight="53.0" prefWidth="120.0" showTickLabels="true" showTickMarks="true" value="-1.0" />
       <Label layoutX="563.0" layoutY="7.0" text="Pouch" textFill="#00ff77">
          <font>
             <Font size="12.0" />
