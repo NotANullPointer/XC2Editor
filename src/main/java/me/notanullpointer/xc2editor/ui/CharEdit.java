@@ -5,11 +5,13 @@ import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import me.notanullpointer.xc2editor.assets.Image;
 import me.notanullpointer.xc2editor.save.Accessory;
 import me.notanullpointer.xc2editor.save.Blade;
@@ -31,6 +33,8 @@ public class CharEdit {
     private boolean shouldOpenPouch1 = true, shouldOpenPouch2 = true, shouldOpenPouch3 = true;
     private boolean shouldOpenAccessory1 = true, shouldOpenAccessory2 = true, shouldOpenAccessory3 = true;
 
+    private Stage bladeStage;
+    private BladeSelection bladeSelectionController;
     private Driver driver;
 
     private @FXML ImageView driverImg;
@@ -69,6 +73,18 @@ public class CharEdit {
     private @FXML JFXComboBox<String> accessorySelection2;
 
     public void setDriver(Driver driver) {
+        try {
+            FXMLLoader ldr = new FXMLLoader(this.getClass().getClassLoader().getResource("fxml/blade_selection.fxml"));
+            Scene bladeSel = new Scene(ldr.load());
+            bladeSelectionController = ldr.getController();
+            bladeStage = new Stage();
+            bladeSelectionController.init(Blade.values(), bladeStage);
+            bladeStage.setScene(bladeSel);
+            bladeStage.sizeToScene();
+            bladeStage.setResizable(false);
+        } catch (Exception e) {
+            System.err.println("Cannot load fxml/blade_selection");
+        }
         this.driver = driver;
         FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
         driverImg.setImage(SwingFXUtils.toFXImage(driver.getDriverImage().getImage(), null));
@@ -123,6 +139,9 @@ public class CharEdit {
             blade2.setImage(toFXImage(setBlade2.getThumbnail().getImage()));
         if(setBlade3 != null)
             blade3.setImage(toFXImage(setBlade3.getThumbnail().getImage()));
+        blade1.setOnMouseClicked(e -> blade1.setImage(toFXImage(bladeSelection().getThumbnail().getImage())));
+        blade2.setOnMouseClicked(e -> blade2.setImage(toFXImage(bladeSelection().getThumbnail().getImage())));
+        blade3.setOnMouseClicked(e -> blade3.setImage(toFXImage(bladeSelection().getThumbnail().getImage())));
 
         if(dataDriver.getPouchInfo()[1].isEnabled.getValue() == 1) {
             togglePouch1();
@@ -330,6 +349,11 @@ public class CharEdit {
             shouldOpenAccessory3 = false;
             popOver.show(accessory2);
         }
+    }
+
+    private Blade bladeSelection() {
+        bladeStage.showAndWait();
+        return bladeSelectionController.getSelectedBlade();
     }
 
     public SDataDriver save() {

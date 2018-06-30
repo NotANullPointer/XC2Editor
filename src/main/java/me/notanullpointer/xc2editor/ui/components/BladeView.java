@@ -24,8 +24,10 @@ public class BladeView extends AnchorPane {
     private @FXML ImageView bladeElement;
     private @FXML ImageView bladeRole;
     private @FXML Label bladeLabel;
+    private BladeSelection parent;
 
-    public BladeView(Blade blade) {
+    public BladeView(Blade blade, BladeSelection parent) {
+        this.parent = parent;
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getClassLoader().getResource("fxml/blade.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -56,7 +58,7 @@ public class BladeView extends AnchorPane {
         this.bladeLabel.setText(blade.getName());
         FontLoader fontLoader = Toolkit.getToolkit().getFontLoader();
         this.bladeLabel.setLayoutX((128-fontLoader.computeStringWidth(blade.getName(), bladeLabel.getFont()))/2);
-        this.setOnMouseClicked(event -> BladeSelection.setSelectedBlade(this.blade));
+        this.setOnMouseClicked(event -> parent.setSelectedBlade(blade));
     }
 
 }

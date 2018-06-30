@@ -96,6 +96,7 @@ public class SaveFile {
         drivers = loadDrivers();
         blades = loadBlades();
         party = new SDataParty().fromByteArray(arrayRange(data, 0xE9894, 0xE9894+0x54));
+        itemBox = new SDataItemBox().fromByteArray(arrayRange(data, 0xE98E8, 0xFBBD4));
         commonBladeIds = loadArr16(data, 0x1099B8, 192);
     }
 
@@ -141,6 +142,14 @@ public class SaveFile {
             res[i] = new SDataBlade().fromByteArray(arrayRange(data, 0x5A3C+0x8A4*(i), 0x5A3C+0x8A4*(i+1)));
         }
         return res;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public Int32 getMagic() {
+        return magic;
     }
 
     public Int64 getTime() {

@@ -6,9 +6,9 @@ public enum Element {
 
     FIRE(1, Image.ELEM_FIRE, "Fire"),
     WATER(2, Image.ELEM_WATER, "Water"),
-    EARTH(3, Image.ELEM_EARTH, "Earth"),
-    ELECTRIC(4, Image.ELEM_ELECTRIC, "Electric"),
-    WIND(5, Image.ELEM_WIND, "Wind"),
+    EARTH(4, Image.ELEM_EARTH, "Earth"),
+    ELECTRIC(5, Image.ELEM_ELECTRIC, "Electric"),
+    WIND(3, Image.ELEM_WIND, "Wind"),
     ICE(6, Image.ELEM_ICE, "Ice"),
     LIGHT(7, Image.ELEM_LIGHT, "Light"),
     DARK(8, Image.ELEM_DARK, "Dark");

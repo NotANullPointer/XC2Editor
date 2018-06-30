@@ -58,41 +58,6 @@ public enum Blade {
     SHULK(1106, Image.SHULK_T, "Shulk", Element.LIGHT, Role.ATK, Weapon.MONADO),
     FIORA(1107, Image.FIORA_T, "Fiora", Element.WIND, Role.HLR, Weapon.KNIVES);
 
-
-    private static String[] commonNames = {"", "Aizen", "Akatsuki", "Akebono", "Azai", "Arai", "Arufumi", "Ikazuchi", "Ikaruga", "Izayoi", "Izumo",
-            "Ichiro", "Ikaku", "Ikki", "Issen", "Inazuma", "Ushio", "Oryuu", "Owashi", "Okina", "Oboro",
-            "Orochi", "Kaiden", "Kaibyaku", "Karkan", "Kagemitsu", "Kagero", "Kazan", "Katsumasa", "Kanesada", "Kanehira",
-            "Kanemitsu", "Kei", "Kijin", "Kibitsu", "Gokuto", "Kirim", "Gingar", "Kur", "Kuzan", "Kusanagi",
-            "Kurochi", "Krogane", "Genno", "Kouki", "Kouru", "Kogarashi", "Kokras", "Gogyo", "Kojiro", "Kosor",
-            "Kotetsu", "Kongir", "Konjiki", "Sakon", "Sangar", "Shun", "Shikiso", "Shishi", "Shichisei", "Shiko",
-            "Shippun", "Shiden", "Shura", "Shungen", "Shin Mei", "Shinra", "Jin Rai", "Jinryuu", "Suro", "Sulgar",
-            "Seigai", "Sysor", "Seiten", "Seimei", "Zeku", "Zeno", "Sordai", "Soten", "Sohmei", "Shouryu",
-            "Sohaya", "Taiga", "Daiko", "Tyzan", "Taisei", "Tyhei", "Tadar", "Tsurugi", "Tenka", "Tenku",
-            "Denko", "Toshi", "Tokka", "Hagan", "Hakusui", "Hakuto", "Hayate", "Hayabusa", "Hanni", "Hei",
-            "Hiken", "Bizen", "Hynk", "Hideh", "Hiden", "Bakuya", "Huga", "Hiryu", "Fuwei", "Fugetsu",
-            "Hukut", "Fudor", "Hekireki", "Bengara", "Horoh", "Hokuto", "Shigan", "Mikazuchi", "Mizuchi", "Mitsukage",
-            "Mior", "Mu", "Mugen", "Musashi", "Mujo", "Musou", "Muchika", "Murakumo", "Murasame", "Meikyo",
-            "Mejiro", "Yago", "Yakumo", "Yasha", "Yata", "Yanagi", "Yamato", "Yuki", "Yuzen", "Yuso",
-            "Yumo", "Yoshikiri", "Rykiri", "Ranmaru", "Rikuzen", "Ryusei", "Ryo", "Rogen", "Reiki", "Roho",
-            "Ai", "Aui", "Auba", "Akana", "Yoiyami", "Asagi", "Asai", "Aska", "Azuki", "Atori",
-            "Amanei", "Amayori", "Ayame", "Anzu", "Koyuki", "Kyoka", "Isuzu", "Ichiku", "Iroha", "Uzura",
-            "Uzuki", "Umi", "Ema", "Orka", "Kaeda", "Sarasa", "Kanami", "Kanon", "Karin", "Karei",
-            "Karyn", "Kanna", "Kiko", "Kisaragi", "Kiri", "Kinsei", "Quina", "Kuko", "Kurumi", "Kurenai",
-            "Kogoku", "Kokutan", "Kokuyo", "Kokoro", "Konoha", "Kohana", "Kohaku", "Sakuya", "Sazami", "Satsuki",
-            "Sango", "Shiori", "Shigura", "Shisui", "Shizuku", "Shinome", "Shinobu", "Shimoki", "Shussu", "Shuraya",
-            "Shiranui", "Shirayuki", "Shirayuri", "Shirome", "Suiren", "Suzu", "Suzukaze", "Suzuna", "Suzuran", "Sumira",
-            "Tsumugi", "Sekirei", "Setsuka", "Sora", "Tamayori", "Chigusa", "Chidori", "Tsugumi", "Tsukumi", "Zutsuji",
-            "Tsubaki", "Tsumi", "Tsura", "Tsuruba", "Tomae", "Torwa", "Nazuna", "Natsuki", "Nadeshiko", "Natori",
-            "Ne Ne", "Nenoh", "Neyuki", "Nosuri", "Hasu", "Hazuki", "Hatsuharu", "Hatsuyuki", "Haruka", "Harusa",
-            "Haruna", "Higana", "Hisui", "Hinagi", "Hinagetsu", "Hinata", "Hibari", "Hibiki", "Himawari", "Faera",
-            "Fubuki", "Fuyoshi", "Yuzu", "Botania", "Honoka", "Madoka", "Mikagami", "Mikazuki", "Mika", "Mikoto",
-            "Misaki", "Midori", "Minazuki", "Minami", "Minori", "Miyuki", "Mirei", "Mutsuki", "Maegi", "Mochi",
-            "Momiji", "Moyoi", "Yayoi", "Yuka", "Yutsuji", "Yuna", "Yukina", "Yukine", "Yuzuki", "Yura",
-            "Yuri", "Yomogi", "Rania", "Rinnia", "Lindora", "Lin", "Ruri", "Reika", "Rengenne", "Wakaba",
-            "Utsuwaka", "Kai", "Kukir", "Kuro", "Goemon", "Koske", "Kotar", "Goro", "Kontro", "Sasuke",
-            "Shimaru", "Shiro", "Tamar", "Tamon", "Tibbi", "Chamaru", "Tokoto", "Totetsu", "Baku", "Hutar",
-            "Pochi", "Bonten", "Ryta", "Riku"};
-
     private static EnumBuster<Blade> buster = new EnumBuster<>(Blade.class);
 
     int id;
@@ -145,13 +110,21 @@ public enum Blade {
         return weapon;
     }
 
+    public static void registerRares() {
+        for (Blade b:values()) {
+            int id = b.getData().getBladeId().getValue();
+            if(b.getData().getCreator().getValue() == 0 && b != POPPIBUSTER && b != SHULK &&  b != FIORA) {
+                buster.deleteByValue(b);
+            }
+        }
+    }
+
     public static Blade getCommon(SDataBlade blade) {
         String resName = blade.getSeResourceName().toString();
-        System.out.println(resName);
         String[] resArgs =  resName.split("_");
         int id = blade.getBladeId().getValue();
-        int race = blade.getRace().getValue();
-        int nameId = blade.getCommonNameId().getValue();
+        int race = Integer.valueOf(resArgs[4]);
+        short nameId = blade.getCommonNameId().getValue();
         Weapon wpn = Weapon.fromId(blade.getWeaponType().getValue());
         Image img = null;
         switch(resArgs[3]) {
@@ -168,11 +141,8 @@ public enum Blade {
                 img = getCommonAnimalImg(race);
                 break;
         }
-        System.out.printf("%d ", (byte)blade.getAtr().getValue());
-        if(img == null)
-            System.out.printf("%s %d\n", resArgs[3], race);
         Class[] paramsType = {int.class, Image.class, String.class, Element.class, Role.class, Weapon.class};
-        Object[] params = {id, img, commonNames[nameId], Element.fromId(blade.getAtr().getValue()), wpn.getRole(), wpn};
+        Object[] params = {id, img, BladeName.fromId(nameId).getName(), Element.fromId(blade.getAtr().getValue()), wpn.getRole(), wpn};
         Blade common = buster.make("CB" + id, 0, paramsType, params);
         common.linkTo(blade);
         buster.addByValue(common);
@@ -181,40 +151,30 @@ public enum Blade {
 
     private static Image getCommonNormalImg(int id) {
         switch (id) {
-            case 1: return Image.CMALE_1;
-            case 2: return Image.CMALE_2;
-            case 3: return Image.CMALE_3;
-            case 4: return Image.CMALE_4;
+            //STUB
+            default: return Image.CMALE_1;
         }
-        return Image.UNKNOWN;
     }
 
     private static Image getCommonBruteImg(int id) {
         switch (id) {
-            case 1: return Image.CBRUTE_1;
-            case 2: return Image.CBRUTE_2;
-            case 3: return Image.CBRUTE_3;
-            case 4: return Image.CBRUTE_4;
+            //STUB
+            default: return Image.CBRUTE_1;
         }
-        return Image.UNKNOWN;
     }
 
     private static Image getCommonFemaleImg(int id) {
         switch (id) {
-            case 1: return Image.CFEMALE_1;
-            case 2: return Image.CFEMALE_2;
-            case 3: return Image.CFEMALE_3;
-            case 4: return Image.CFEMALE_4;
+            //STUB
+            default: return Image.CFEMALE_1;
         }
-        return Image.UNKNOWN;
     }
 
     private static Image getCommonAnimalImg(int id) {
         switch (id) {
-            case 1: return Image.CANIMAL_1;
-            case 2: return Image.CANIMAL_2;
+            //STUB
+            default: return Image.CANIMAL_1;
         }
-        return Image.UNKNOWN;
     }
 
     public void linkTo(SDataBlade blade) {
