@@ -7,25 +7,25 @@ import static me.notanullpointer.xc2editor.save.parser.Utils.loadArr32;
 
 public class SDataItemBox {
 
-    public ItemInfo pcWpnChipBox[/*200*/];
-    public ItemInfo pcEquipBox[/*900*/];
-    public ItemInfo equipOrbBox[/*500*/];
-    public ItemInfo salvageBox[/*200*/];
-    public ItemInfo preciousBox[/*500*/];
-    public ItemInfo infoBox[/*200*/];
-    public ItemInfo eventBox[/*100*/];
-    public ItemInfo collectionListBox[/*500*/];
-    public ItemInfo treasureBox[/*200*/];
-    public ItemInfo emptyOrbBox[/*500*/];
-    public ItemInfo favoriteBox[/*500*/];
-    public ItemInfo crystalListBox[/*200*/];
-    public ItemInfo boosterBox[/*200*/];
-    public ItemInfo hanaRoleBox[/*200*/];
-    public ItemInfo hanaAtrBox[/*200*/];
-    public ItemInfo hanaArtsBox[/*200*/];
-    public ItemInfo hanaNArtsBox[/*200*/];
-    public ItemInfo hanaAssistBox[/*700*/];
-    public Int32 serials[/*19*/];
+    private ItemInfo pcWpnChipBox[/*200*/];
+    private ItemInfo pcEquipBox[/*900*/];
+    private ItemInfo equipOrbBox[/*500*/];
+    private ItemInfo salvageBox[/*200*/];
+    private ItemInfo preciousBox[/*500*/];
+    private ItemInfo infoBox[/*200*/];
+    private ItemInfo eventBox[/*100*/];
+    private ItemInfo collectionListBox[/*500*/];
+    private ItemInfo treasureBox[/*200*/];
+    private ItemInfo emptyOrbBox[/*500*/];
+    private ItemInfo favoriteBox[/*500*/];
+    private ItemInfo crystalListBox[/*200*/];
+    private ItemInfo boosterBox[/*200*/];
+    private ItemInfo hanaRoleBox[/*200*/];
+    private ItemInfo hanaAtrBox[/*200*/];
+    private ItemInfo hanaArtsBox[/*200*/];
+    private ItemInfo hanaNArtsBox[/*200*/];
+    private ItemInfo hanaAssistBox[/*700*/];
+    private Int32 serials[/*19*/];
     
     int[][] posLen = {{0x0, 0xC8}, {0xC8*0xC, 0x384}, {0x44C*0xC, 0x1F4}, {0x640*0xC, 0xC8},
                       {0x708*0xC, 0x1F4}, {0x8FC*0xC, 0xC8}, {0x9C4*0xC, 0x64}, {0xA28*0xC, 0x1F4},
@@ -49,4 +49,79 @@ public class SDataItemBox {
         return res;
     }
 
+    public ItemInfo[] getPcWpnChipBox() {
+        return pcWpnChipBox;
+    }
+
+    public ItemInfo[] getPcEquipBox() {
+        return pcEquipBox;
+    }
+
+    public ItemInfo[] getEquipOrbBox() {
+        return equipOrbBox;
+    }
+
+    public ItemInfo[] getSalvageBox() {
+        return salvageBox;
+    }
+
+    public ItemInfo[] getPreciousBox() {
+        return preciousBox;
+    }
+
+    public ItemInfo[] getInfoBox() {
+        return infoBox;
+    }
+
+    public ItemInfo[] getEventBox() {
+        return eventBox;
+    }
+
+    public ItemInfo[] getCollectionListBox() {
+        return collectionListBox;
+    }
+
+    public ItemInfo[] getTreasureBox() {
+        return treasureBox;
+    }
+
+    public ItemInfo[] getEmptyOrbBox() {
+        return emptyOrbBox;
+    }
+
+    public ItemInfo[] getFavoriteBox() {
+        return favoriteBox;
+    }
+
+    public ItemInfo[] getCrystalListBox() {
+        return crystalListBox;
+    }
+
+    public ItemInfo[] getBoosterBox() {
+        return boosterBox;
+    }
+
+    public ItemInfo[] getHanaRoleBox() {
+        return hanaRoleBox;
+    }
+
+    public ItemInfo[] getHanaAtrBox() {
+        return hanaAtrBox;
+    }
+
+    public ItemInfo[] getHanaArtsBox() {
+        return hanaArtsBox;
+    }
+
+    public ItemInfo[] getHanaNArtsBox() {
+        return hanaNArtsBox;
+    }
+
+    public ItemInfo[] getHanaAssistBox() {
+        return hanaAssistBox;
+    }
+
+    public Int32[] getSerials() {
+        return serials;
+    }
 }

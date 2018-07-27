@@ -8,6 +8,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import me.notanullpointer.xc2editor.save.*;
 import me.notanullpointer.xc2editor.save.parser.Int16;
+import me.notanullpointer.xc2editor.save.parser.Utils;
 import me.notanullpointer.xc2editor.save.structure.SaveFile;
 import me.notanullpointer.xc2editor.ui.Menu;
 
@@ -46,6 +47,7 @@ public class XC2Editor extends Application {
         }
         linkDrivers();
         linkBlades();
+        System.out.printf("%d\n", Utils.serialFromItemHandle(getSaveFile().getDrivers()[0].getAccessoryHandle0()));
         FXMLLoader ldr = new FXMLLoader(this.getClass().getClassLoader().getResource("fxml/menu.fxml"));
         me.notanullpointer.xc2editor.assets.Image.load();
         Scene prim = new Scene(ldr.load());

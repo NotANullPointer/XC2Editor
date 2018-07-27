@@ -92,4 +92,12 @@ public class Utils {
         return new String(res);
     }
 
+    public static byte typeFromItemHandle(Int32 itemHandle) {
+        return (byte)(itemHandle.getValue() & 0x0000003F);
+    }
+
+    public static int serialFromItemHandle(Int32 itemHandle) {
+        return (itemHandle.getValue() & 0xFFFFFFC0) >> 6;
+    }
+
 }

@@ -13,20 +13,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import me.notanullpointer.xc2editor.assets.Image;
-import me.notanullpointer.xc2editor.save.Accessory;
-import me.notanullpointer.xc2editor.save.Blade;
-import me.notanullpointer.xc2editor.save.Driver;
-import me.notanullpointer.xc2editor.save.PouchItem;
+import me.notanullpointer.xc2editor.save.*;
 import me.notanullpointer.xc2editor.save.parser.Int16;
+import me.notanullpointer.xc2editor.save.parser.Int32;
 import me.notanullpointer.xc2editor.save.parser.Utils;
-import me.notanullpointer.xc2editor.save.structure.DriverArt;
-import me.notanullpointer.xc2editor.save.structure.SDataDriver;
-import me.notanullpointer.xc2editor.save.structure.SDataIdea;
-import me.notanullpointer.xc2editor.save.structure.SDataPouch;
+import me.notanullpointer.xc2editor.save.structure.*;
 import org.controlsfx.control.PopOver;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.awt.image.BufferedImage;
+
+import static me.notanullpointer.xc2editor.save.parser.Utils.serialFromItemHandle;
 
 public class CharEdit {
 
@@ -90,42 +87,55 @@ public class CharEdit {
         driverImg.setImage(SwingFXUtils.toFXImage(driver.getDriverImage().getImage(), null));
         driverName.setText(driver.getDriverName());
         driverName.setLayoutX(9+(135-fontLoader.computeStringWidth(driverName.getText(), driverName.getFont()))/2);
+
         accessory0.setImage(toFXImage(Image.UNKNOWN.getImage()));
         accessory1.setImage(toFXImage(Image.UNKNOWN.getImage()));
         accessory2.setImage(toFXImage(Image.UNKNOWN.getImage()));
+
         pouch0.setImage(toFXImage(Image.UNKNOWN.getImage()));
         pouch1.setImage(toFXImage(Image.UNKNOWN.getImage()));
         pouch2.setImage(toFXImage(Image.UNKNOWN.getImage()));
+
         bladeBase.setImage(toFXImage(Image.BLADE_BASE.getImage()));
+
         bravery.setImage(toFXImage(Image.BRAVERY.getImage()));
         truth.setImage(toFXImage(Image.TRUTH.getImage()));
         compassion.setImage(toFXImage(Image.COMPASSION.getImage()));
         justice.setImage(toFXImage(Image.JUSTICE.getImage()));
+
         pouchText0.getItems().addAll(PouchItem.stringValues());
         pouchText0.setEditable(true);
         TextFields.bindAutoCompletion(pouchText0.getEditor(), pouchText0.getItems());
+
         pouchText1.getItems().addAll(PouchItem.stringValues());
         pouchText1.setEditable(true);
         TextFields.bindAutoCompletion(pouchText1.getEditor(), pouchText1.getItems());
+
         pouchText2.getItems().addAll(PouchItem.stringValues());
         pouchText2.setEditable(true);
         TextFields.bindAutoCompletion(pouchText2.getEditor(), pouchText2.getItems());
+
         accessorySelection0.getItems().addAll(Accessory.stringValues());
         accessorySelection0.setEditable(true);
         TextFields.bindAutoCompletion(accessorySelection0.getEditor(), accessorySelection0.getItems());
+
         accessorySelection1.getItems().addAll(Accessory.stringValues());
         accessorySelection1.setEditable(true);
         TextFields.bindAutoCompletion(accessorySelection1.getEditor(), accessorySelection1.getItems());
+
         accessorySelection2.getItems().addAll(Accessory.stringValues());
         accessorySelection2.setEditable(true);
         TextFields.bindAutoCompletion(accessorySelection2.getEditor(), accessorySelection2.getItems());
 
         SDataDriver dataDriver = driver.getData();
+
         levelSlider.setValue(dataDriver.getLevel().getValue());
+
         braverySlider.setValue(dataDriver.getIdeaLevels()[0].ideaLevel.getValue());
         truthSlider.setValue(dataDriver.getIdeaLevels()[1].ideaLevel.getValue());
         compassionSlider.setValue(dataDriver.getIdeaLevels()[2].ideaLevel.getValue());
         justiceSlider.setValue(dataDriver.getIdeaLevels()[3].ideaLevel.getValue());
+
         bonusExpTextBox.setText(Integer.toString(dataDriver.getExp().getValue()));
         weaponPointsTextBox.setText("0");
         skillPointsTextBox.setText(Integer.toString(dataDriver.getSkillPoints().getValue()));
@@ -133,20 +143,26 @@ public class CharEdit {
         Blade setBlade1 = Blade.fromId(dataDriver.getEquippedBlades()[0].getValue());
         Blade setBlade2 = Blade.fromId(dataDriver.getEquippedBlades()[1].getValue());
         Blade setBlade3 = Blade.fromId(dataDriver.getEquippedBlades()[2].getValue());
+
         if(setBlade1 != null)
             blade1.setImage(toFXImage(setBlade1.getThumbnail().getImage()));
+
         if(setBlade2 != null)
             blade2.setImage(toFXImage(setBlade2.getThumbnail().getImage()));
+
         if(setBlade3 != null)
             blade3.setImage(toFXImage(setBlade3.getThumbnail().getImage()));
-        blade1.setOnMouseClicked(e -> blade1.setImage(toFXImage(bladeSelection().getThumbnail().getImage())));
-        blade2.setOnMouseClicked(e -> blade2.setImage(toFXImage(bladeSelection().getThumbnail().getImage())));
-        blade3.setOnMouseClicked(e -> blade3.setImage(toFXImage(bladeSelection().getThumbnail().getImage())));
+
+        //TODO: decent bureido selection
+        //blade1.setOnMouseClicked(e -> blade1.setImage(toFXImage(bladeSelection().getThumbnail().getImage())));
+        //blade2.setOnMouseClicked(e -> blade2.setImage(toFXImage(bladeSelection().getThumbnail().getImage())));
+        //blade3.setOnMouseClicked(e -> blade3.setImage(toFXImage(bladeSelection().getThumbnail().getImage())));
 
         if(dataDriver.getPouchInfo()[1].isEnabled.getValue() == 1) {
             togglePouch1();
             pouchToggle1.setSelected(true);
         }
+
         if(dataDriver.getPouchInfo()[2].isEnabled.getValue() == 1) {
             togglePouch2();
             pouchToggle2.setSelected(true);
@@ -155,14 +171,17 @@ public class CharEdit {
         PouchItem pouchItem1 = PouchItem.fromId(dataDriver.getPouchInfo()[0].itemId.getValue());
         PouchItem pouchItem2 = PouchItem.fromId(dataDriver.getPouchInfo()[1].itemId.getValue());
         PouchItem pouchItem3 = PouchItem.fromId(dataDriver.getPouchInfo()[2].itemId.getValue());
+
         if(pouchItem1 != null) {
             pouch0.setImage(toFXImage(pouchItem1.getCategory().getImage().getImage()));
             pouchText0.setValue(pouchItem1.getName());
         }
+
         if(pouchItem2 != null) {
             pouch1.setImage(toFXImage(pouchItem2.getCategory().getImage().getImage()));
             pouchText1.setValue(pouchItem2.getName());
         }
+
         if(pouchItem3 != null) {
             pouch2.setImage(toFXImage(pouchItem3.getCategory().getImage().getImage()));
             pouchText2.setValue(pouchItem3.getName());
@@ -176,14 +195,17 @@ public class CharEdit {
         Accessory accessory1 = Accessory.fromId(dataDriver.getAccessoryId0().getValue());
         Accessory accessory2 = Accessory.fromId(dataDriver.getAccessoryId1().getValue());
         Accessory accessory3 = Accessory.fromId(dataDriver.getAccessoryId2().getValue());
+
         if(accessory1 != null) {
             this.accessory0.setImage(toFXImage(accessory1.getIcon().getImage()));
             accessorySelection0.setValue(accessory1.getName());
         }
+
         if(accessory2 != null) {
             this.accessory1.setImage(toFXImage(accessory2.getIcon().getImage()));
             accessorySelection1.setValue(accessory2.getName());
         }
+
         if(accessory3 != null) {
             this.accessory2.setImage(toFXImage(accessory3.getIcon().getImage()));
             accessorySelection2.setValue(accessory3.getName());
@@ -358,34 +380,72 @@ public class CharEdit {
 
     public SDataDriver save() {
         SDataDriver sDataDriver = new SDataDriver().fromByteArray(driver.getData().getRawData());
+
         sDataDriver.getSkillPoints().setValue(Integer.valueOf(skillPointsTextBox.getText()));
-        for (DriverArt weapon:sDataDriver.getWeapons())
+
+        for (DriverArt weapon : sDataDriver.getWeapons())
             weapon.weaponPoints.setValue(Integer.valueOf(weaponPointsTextBox.getText()));
+
         sDataDriver.getExp().setValue(Integer.valueOf(bonusExpTextBox.getText()));
+
         SDataIdea[] ideas = sDataDriver.getIdeaLevels();
-        ideas[0].getIdeaLevel().setValue((int)braverySlider.getValue());
-        ideas[1].getIdeaLevel().setValue((int)truthSlider.getValue());
-        ideas[2].getIdeaLevel().setValue((int)compassionSlider.getValue());
-        ideas[3].getIdeaLevel().setValue((int)justiceSlider.getValue());
+        ideas[0].getIdeaLevel().setValue((int) braverySlider.getValue());
+        ideas[1].getIdeaLevel().setValue((int) truthSlider.getValue());
+        ideas[2].getIdeaLevel().setValue((int) compassionSlider.getValue());
+        ideas[3].getIdeaLevel().setValue((int) justiceSlider.getValue());
+
         PouchItem pouchItem1 = PouchItem.fromName(pouchText0.getValue() == null ? "" : pouchText0.getValue());
         PouchItem pouchItem2 = PouchItem.fromName(pouchText1.getValue() == null ? "" : pouchText1.getValue());
         PouchItem pouchItem3 = PouchItem.fromName(pouchText2.getValue() == null ? "" : pouchText2.getValue());
+
         Accessory accessory1 = Accessory.fromName(accessorySelection0.getValue() == null ? "" : accessorySelection0.getValue());
         Accessory accessory2 = Accessory.fromName(accessorySelection1.getValue() == null ? "" : accessorySelection1.getValue());
         Accessory accessory3 = Accessory.fromName(accessorySelection2.getValue() == null ? "" : accessorySelection2.getValue());
+
         SDataPouch[] pouch = sDataDriver.getPouchInfo();
-        pouch[0].itemId.setValue(pouchItem1 == null ? pouch[0].itemId.getValue() : (short)pouchItem1.getId());
-        pouch[0].time.setValue(pouchItem1 == null ? pouch[0].time.getValue() : (short)pouchItem1.getDuration());
-        pouch[1].itemId.setValue(pouchItem2 == null ? pouch[1].itemId.getValue() : (short)pouchItem2.getId());
-        pouch[1].time.setValue(pouchItem2 == null ? pouch[1].time.getValue() : (short)pouchItem2.getDuration());
-        pouch[2].itemId.setValue(pouchItem3 == null ? pouch[2].itemId.getValue() : (short)pouchItem3.getId());
-        pouch[2].time.setValue(pouchItem3 == null ? pouch[2].time.getValue() : (short)pouchItem3.getDuration());
+
+        pouch[0].itemId.setValue(pouchItem1 == null ? pouch[0].itemId.getValue() : (short) pouchItem1.getId());
+        pouch[0].time.setValue(pouchItem1 == null ? pouch[0].time.getValue() : (short) pouchItem1.getDuration());
+
+        pouch[1].itemId.setValue(pouchItem2 == null ? pouch[1].itemId.getValue() : (short) pouchItem2.getId());
+        pouch[1].time.setValue(pouchItem2 == null ? pouch[1].time.getValue() : (short) pouchItem2.getDuration());
+
+        pouch[2].itemId.setValue(pouchItem3 == null ? pouch[2].itemId.getValue() : (short) pouchItem3.getId());
+        pouch[2].time.setValue(pouchItem3 == null ? pouch[2].time.getValue() : (short) pouchItem3.getDuration());
+
         Int16 accessoryId0 = sDataDriver.getAccessoryId0();
+        Int32 accessoryHandle0 = sDataDriver.getAccessoryHandle0();
+        ItemInfo accessoryInfo0 = ItemBox.PC_EQUIP.getItemBySerial(serialFromItemHandle(accessoryHandle0));
+
         Int16 accessoryId1 = sDataDriver.getAccessoryId1();
+        Int32 accessoryHandle1 = sDataDriver.getAccessoryHandle1();
+        ItemInfo accessoryInfo1 = ItemBox.PC_EQUIP.getItemBySerial(serialFromItemHandle(accessoryHandle1));
+
         Int16 accessoryId2 = sDataDriver.getAccessoryId2();
-        accessoryId0.setValue(accessory1 == null ? accessoryId0.getValue() : (short)accessory1.getId());
+        Int32 accessoryHandle2 = sDataDriver.getAccessoryHandle2();
+        ItemInfo accessoryInfo2 = ItemBox.PC_EQUIP.getItemBySerial(serialFromItemHandle(accessoryHandle2));
+
+        accessoryId0.setValue(accessory1 == null ? accessoryId0.getValue() : (short) accessory1.getId());
+        if (accessoryHandle0.getValue() == 0) {
+            ItemBox.PC_EQUIP.addItem(accessoryId0.getValue(), (short) 1);
+        } else if (accessoryInfo0.getId() != accessoryId1.getValue()) {
+            accessoryInfo0.setId(accessoryId0.getValue());
+        }
+
         accessoryId1.setValue(accessory2 == null ? accessoryId1.getValue() : (short)accessory2.getId());
+        if (accessoryHandle1.getValue() == 0) {
+            ItemBox.PC_EQUIP.addItem(accessoryId1.getValue(), (short) 1);
+        } else if (accessoryInfo1.getId() != accessoryId1.getValue()) {
+            accessoryInfo0.setId(accessoryId1.getValue());
+        }
+
         accessoryId2.setValue(accessory3 == null ? accessoryId2.getValue() : (short)accessory3.getId());
+        if (accessoryHandle0.getValue() == 0) {
+            ItemBox.PC_EQUIP.addItem(accessoryId2.getValue(), (short) 1);
+        } else if (accessoryInfo2.getId() != accessoryId2.getValue()) {
+            accessoryInfo2.setId(accessoryId0.getValue());
+        }
+
         sDataDriver.isAccessory2Enabled().setValue(accessoryToggle2.isSelected() ? (char)0x80 : (char)0x0);
         return sDataDriver;
     }
